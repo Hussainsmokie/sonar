@@ -37,7 +37,8 @@ jobs:
         run: curl -I ${{ secrets.SONAR_HOST_URL_ }}
 
       - name: Run SonarQube Scan
-        run: mvn -B sonar:sonar \
+        run: |
+          mvn -B sonar:sonar \
           -Dsonar.projectKey=sonar-demo-java \
           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL_ }} \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
