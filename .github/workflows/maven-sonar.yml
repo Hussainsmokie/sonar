@@ -32,6 +32,9 @@ jobs:
         continue-on-error: true
         env:
           DISPLAY: :99
+          
+      - name: Test SonarQube connectivity
+        run: curl -I ${{ secrets.SONAR_HOST_URL }}
 
       - name: Run SonarQube Scan
         run: mvn -B sonar:sonar \
