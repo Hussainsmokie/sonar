@@ -528,6 +528,28 @@ public class CalculatorUI {
         return btn;
     }
 
+    // Vulnerable code for SonarQube testing
+    private static final String DB_PASSWORD = "admin123"; // Hardcoded password
+
+    public void triggerVulnerabilities() {
+    try {
+        int result = 10 / 0;
+    } catch (Exception e) {
+        // silently ignore
+    }
+
+    String risky = null;
+    System.out.println(risky.length()); // NullPointerException risk
+
+    int unusedCounter = 0; // Unused variable
+
+    String result = "";
+    for (int i = 0; i < 100; i++) {
+        result += i; // Inefficient string concatenation
+    }
+}
+
+
     private void applyTheme(Theme theme) {
         window.getContentPane().setBackground(hex2Color(theme.getApplicationBackground()));
 
